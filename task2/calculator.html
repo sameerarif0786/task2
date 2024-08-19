@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background-color: grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      .tab {
+        text-align: center;
+        background-color: black;
+        width: 100%;
+        max-width: 300px;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        box-shadow: 0 0 10px cyan;
+        transition:box-shadow 0.5s ease-in-out;
+      }
+
+      .tab:hover{
+        box-shadow:0 0 25px cyan;
+      }
+
+      .but {
+        height: 60px;
+        width: 60px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        display: inline-block;
+      }
+
+      .butrow{
+        padding-top: 10px;
+      }
+               
+      .n-button {
+        background-color: #8d10c7;
+        color: #cc9433;
+      }
+
+      .o-button {
+    background-color: #c4d50a;
+
+      }
+
+      .c-button {
+        padding: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-top: 15px;
+        width: 50%;
+      }
+
+      input {
+        margin-top: 15px;
+        width: 90%;
+        font-size: 30px;
+        text-align: right;
+        border-radius: 10px;
+        padding: 10px;
+        border: none;
+        color:#000000d4
+      }
+      
+
+      @media (max-width: 400px) {
+        .but {
+          height: 50px;
+          width: 50px;
+          font-size: 16px;
+        }
+
+        .c-button {
+          font-size: 16px;
+          width: 50%;
+        }
+
+        input {
+          font-size: 24px;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+      <input id="display" readonly>
+      <div class="butrow">
+        <button class="but n-button" onclick="number('1')">1</button>
+        <button class="but n-button" onclick="number('2')">2</button>
+        <button class="but n-button" onclick="number('3')">3</button>
+        <button class="but o-button" onclick="number('+')">+</button>
+      </div>
+      <div class="butrow">
+        <button class="but n-button" onclick="number('4')">4</button>
+        <button class="but n-button" onclick="number('5')">5</button>
+        <button class="but n-button" onclick="number('6')">6</button>
+        <button class="but o-button" onclick="number('-')">-</button>
+      </div>
+      <div class="butrow">
+        <button class="but n-button" onclick="number('7')">7</button>
+        <button class="but n-button" onclick="number('8')">8</button>
+        <button class="but n-button" onclick="number('9')">9</button>
+        <button class="but o-button" onclick="number('*')">*</button>
+      </div>
+      <div class="butrow">
+        <button class="but n-button" onclick="number('0')">0</button>
+        <button class="but n-button" onclick="number('.')">.</button>
+        <button class="but n-button" onclick="problem()">=</button>
+        <button class="but o-button" onclick="number('/')">/</button>
+      </div>
+      <div>
+        <button class="n-button c-button" onclick="ccdisplay()">Clear</button>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById('display');
+
+      function number(num) {
+        display.value += num;
+      }
+
+      function problem() {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = 'Syntax Error';
+        }
+        }
+      
+
+      function ccdisplay() {
+        display.value = '';
+      }
+    </script>
+  </body>
+</html>
